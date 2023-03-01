@@ -26,7 +26,6 @@ const ButtonBase = styled.button`
   font-size: ${(props: Props) => props.fontSize};
   width: ${(props: Props) => props.width};
   height: ${(props: Props) => props.height};
-
   border-radius: ${(props: Props) => props.borderRadius};
 
   &:hover {

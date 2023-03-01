@@ -1,10 +1,10 @@
 import { SyntheticEvent } from "react";
 import { NavLink, useOutletContext } from "react-router-dom";
 import styled from "styled-components";
-import { colors, space } from "../assets/css/params";
-import ProductDisplay from "./product/ProductDisplay";
-import { actions } from "./product/productReducer";
-import { ProductsContext } from "./Products";
+import { colors, space } from "../../assets/css/params";
+import ProductDisplay from "../product/ProductDisplay";
+import { actions } from "../product/productReducer";
+import { ProductsContext } from "../Products";
 
 const Pagination = styled.div`
   width: 50vw;

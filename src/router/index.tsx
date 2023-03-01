@@ -5,12 +5,12 @@ import Home from "../views/Home";
 import Login from "../views/Login";
 import DashBoard from "../views/DashBoard";
 import Products from "../views/Products";
-import ProductDetail from "../views/ProductDetail";
+import ProductDetail from "../views/product/ProductDetail";
 import Finance from "../views/Finance";
-import ProductList from "../views/ProductList";
-import ProductNew from "../views/ProductNew";
-import ProductCategory from "../views/ProductCategory";
-import ProductListList from "../views/ProductListList";
+import ProductList from "../views/product/ProductList";
+import ProductNew from "../views/product/ProductNew";
+import ProductCategory from "../views/product/ProductCategory";
+import ProductListList from "../views/product/ProductListList";
 
 const router = createHashRouter([
   { path: "/login", element: <Login /> },

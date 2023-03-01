@@ -9,6 +9,7 @@ import {
 } from "./product/productReducer";
 import { Outlet } from "react-router-dom";
 import { Dispatch } from "react";
+import isLogin from "./isLogin";
 
 const PageBox = styled.div`
   padding: ${space.space};
@@ -27,4 +28,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default isLogin(Products);

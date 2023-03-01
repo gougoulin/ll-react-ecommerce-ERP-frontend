@@ -5,8 +5,8 @@ import {
 } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import styled from "styled-components";
-import { colors, space } from "../assets/css/params";
-import ButtonBase from "../components/button/ButtonBase";
+import { colors, space } from "../../assets/css/params";
+import ButtonBase from "../../components/button/ButtonBase";
 
 const MainBox = styled.main`
   padding: ${space.space};

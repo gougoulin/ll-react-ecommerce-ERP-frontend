@@ -24,11 +24,14 @@ const ButtonWithIcon = (props: PropsType) => {
   return (
     <ButtonBase
       onClick={onClick}
+      fontSize={"1.6rem"}
+      padding={"0.25em 0.5em"}
       textColor={colors.gray11}
       backgroundColor="transparent"
       borderColor="transparent"
       hoverBgColor={colors.primary.lighter}
       hoverTextColor={colors.gray1}
+      borderRadius={space.borderRadius}
     >
       <Wrapper>
         {left}

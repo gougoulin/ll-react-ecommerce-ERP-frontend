@@ -1,5 +1,5 @@
 import { useLocation, useParams, useOutletContext } from "react-router-dom";
-import { ProductsContext } from "./Products";
+import { ProductsContext } from "../Products";
 
 const ProductDetail = () => {
   const [state, dispatch] = useOutletContext<ProductsContext>();
