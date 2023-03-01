@@ -1,9 +1,7 @@
-import React, {
+import {
   createRef,
   SyntheticEvent,
-  useEffect,
-  useRef,
-  useState
+  useEffect, useState
 } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import styled from "styled-components";

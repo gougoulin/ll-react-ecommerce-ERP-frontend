@@ -1,6 +1,5 @@
-import React from "react";
-import styled, { StyledComponent } from "styled-components";
-import { colors, font, space } from "../../assets/css/params";
+import styled from "styled-components";
+import { colors, space } from "../../assets/css/params";
 
 type Props = {
   borderColor?: string;
@@ -41,7 +40,7 @@ ButtonBase.defaultProps = {
   borderColor: "transparent",
   backgroundColor: `${colors.primary.base}`,
   textColor: `${colors.gray1}`,
-  fontSize: "16",
+  fontSize: "1rem",
   width: "auto",
   height: "auto",
   hoverBgColor: `${colors.primary.lighter}`,

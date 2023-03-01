@@ -1,4 +1,3 @@
-import { MenuFoldOutlined } from "@ant-design/icons";
 import { Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import HeaderBox from "./home/HeaderBox";
@@ -8,14 +7,11 @@ import NavItem from "./home/NavItem";
 import PageBox from "./home/PageBox";
 import SiderBox from "./home/SiderBox";
 import SiderNav from "./home/SiderNav";
-import ContentRoutes from "../router/ContentRoutes";
 import isLogin from "./isLogin";
 import navi from "../config/nav";
 import * as helper from "../utils/helper";
 import { useState } from "react";
 import { MenuFoldOutlinedWithAction } from "../components/icons";
-import { useLocation } from "react-router-dom";
-import MainRoutes from "../router/MainRoutes";
 
 const HeaderNavBox = styled.nav`
   display: flex;
@@ -36,7 +32,6 @@ const headerNavItemList = navi.headerNav.map((it, id) => {
 
 const Home = () => {
   const [collapse, setCollapse] = useState(false);
-  const location = useLocation();
   const siderNavItemList = navi.siderNav.map((it, id) => {
     return (
       <MenuItem

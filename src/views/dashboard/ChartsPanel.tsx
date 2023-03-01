@@ -1,7 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { colors, space } from "../../assets/css/params";
-import ButtonBase from "../../components/button/ButtonBase";
-import ButtonOutline from "../../components/button/ButtonOutline";
 import CardBox from "../../components/CardBox";
 import List from "../../components/list/List";
 import ListItem from "../../components/list/ListItem";
@@ -19,7 +17,6 @@ const LineChart = styled.div`
 `;
 
 const ChartsPanel = () => {
-  const barRef = useRef();
   useEffect(() => {
     let chart = echarts.init(document.getElementById("bar") as HTMLElement);
     let option = {

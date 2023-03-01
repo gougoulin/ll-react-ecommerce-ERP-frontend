@@ -9,7 +9,7 @@ import { BsList } from "react-icons/bs";
 import ButtonWithIcon from "../../components/button/ButtonWithIcon";
 import { BiCategoryAlt } from "react-icons/bi";
 import IconBtn from "../../components/button/IconBtn";
-import { createRef, useRef, useState } from "react";
+import { createRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HeaderBox = styled.div`

@@ -55,17 +55,13 @@ const colors = {
 };
 
 const space = {
-  borderRadius: "2px",
-  sxSpace: "4px",
-  sSpace: "8px",
-  space: "16px",
-  mSpace: "24px",
-  lSpace: "48px",
-  xlSpace: "96px"
+  borderRadius: "0.5em",
+  sxSpace: "0.4rem",
+  sSpace: "0.8rem",
+  space: "1.6rem",
+  mSpace: "2.4rem",
+  lSpace: "4.8rem",
+  xlSpace: "7.2rem"
 };
 
-const font = {
-  px2rem: (size) => `${(size / 16).toFixed(1)}rem`
-};
-
-export { colors, space, font };
+export { colors, space };

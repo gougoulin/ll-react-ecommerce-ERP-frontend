@@ -80,7 +80,7 @@ const ProductDisplay = ({
         console.error(err.message);
         dispatch(actions.endLoading());
       });
-  }, []);
+  }, [dispatch]);
 
   return (
     <ProductsDisplayBox>

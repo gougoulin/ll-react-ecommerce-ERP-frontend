@@ -1,6 +1,5 @@
-import { ReactElement, SyntheticEvent, memo, useEffect } from "react";
+import { ReactElement, SyntheticEvent, memo } from "react";
 import { NavLink } from "react-router-dom";
-import { keyId } from "../../utils/helper";
 import SiderNavItem from "./SiderNavItem";
 import { useState } from "react";
 import {
@@ -32,7 +31,7 @@ interface MenuItemProps {
 
 const MenuItem = (props: MenuItemProps) => {
   const [isFold, setIsFold] = useState(true);
-  const { text, subText, leftIcon, active, to, showRightIcon, showMidText } =
+  const { text, subText, leftIcon, to, showRightIcon, showMidText } =
     props;
   const onClick = (ev: SyntheticEvent) => {
     ev.preventDefault();

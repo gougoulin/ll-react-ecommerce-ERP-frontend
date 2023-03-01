@@ -1,4 +1,3 @@
-import { DatabaseOutlined } from "@ant-design/icons";
 import { colors, space } from "../../assets/css/params";
 import ButtonBase from "../../components/button/ButtonBase";
 import CardBox from "../../components/CardBox";

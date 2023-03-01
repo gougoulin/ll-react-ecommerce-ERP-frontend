@@ -1,9 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 import { colors, space } from "../../assets/css/params";
 import CardBox from "../../components/CardBox";
-import List from "../../components/list/List";
-import ListItem from "../../components/list/ListItem";
 
 const SalesTable = styled.div`
   display: grid;
