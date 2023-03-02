@@ -1,4 +1,4 @@
-import { ReactElement, SyntheticEvent, memo } from "react";
+import { ReactElement, SyntheticEvent, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import SiderNavItem from "./SiderNavItem";
 import { useState } from "react";
@@ -27,13 +27,15 @@ interface MenuItemProps {
   to: string;
   showRightIcon?: boolean | undefined;
   showMidText?: boolean | undefined;
+  collapse?: boolean;
 }
 
 const MenuItem = (props: MenuItemProps) => {
   const [isFold, setIsFold] = useState(true);
-  const { text, subText, leftIcon, to, showRightIcon, showMidText } =
+  const { text, subText, leftIcon, to, showRightIcon, showMidText, collapse } =
     props;
-  const onClick = (ev: SyntheticEvent) => {
+
+  const toggleFold = (ev: SyntheticEvent) => {
     ev.preventDefault();
     ev.stopPropagation();
     setIsFold(!isFold);
@@ -41,67 +43,68 @@ const MenuItem = (props: MenuItemProps) => {
   const handleLink = (ev: SyntheticEvent) => {
     ev.stopPropagation();
   };
-  const subMenu =
-    subText &&
-    subText.map((it, id) => {
-      return (
-        <SiderNavItem key={id + (it.text ? it.text : "")}>
-          <span></span>
-          <NavLink onClick={handleLink} to={it.to ? it.to : ""}>
-            {({ isActive }) => {
-              return isActive ? (
-                <ActiveSpan>{it.text}</ActiveSpan>
-              ) : (
-                <span>{it.text}</span>
-              );
-            }}
-          </NavLink>
-        </SiderNavItem>
-      );
-    });
+
+  const showSubMenu = !collapse && isFold && !!subText;
+
+  const subMenu = showSubMenu
+    ? subText.map((it, id) => {
+        return (
+          <SiderNavItem key={id + (it.text ? it.text : "")}>
+            <span></span>
+            <NavLink onClick={handleLink} to={it.to ? it.to : ""}>
+              {({ isActive }) => {
+                return isActive ? (
+                  <ActiveSpan>{it.text}</ActiveSpan>
+                ) : (
+                  <span>{it.text}</span>
+                );
+              }}
+            </NavLink>
+          </SiderNavItem>
+        );
+      })
+    : null;
 
   const RightIcon = isFold ? (
-    <DownOutlinedWithAction onClick={onClick} />
+    <DownOutlinedWithAction onClick={toggleFold} />
   ) : (
-    <UpOutlinedWithAction onClick={onClick} />
+    <UpOutlinedWithAction onClick={toggleFold} />
   );
 
-  return (
-    <>
-      {showMidText ? (
-        <SiderNavItem theme={{ collapse: "auto" }}>
-          {to.length === 0 ? (
-            <span>{leftIcon}</span>
-          ) : (
-            <NavLink to={to}>{leftIcon}</NavLink>
-          )}
-        </SiderNavItem>
+  const iconOnlyItem = (
+    <SiderNavItem theme={{ collapse: "auto" }}>
+      {to.length === 0 ? (
+        <span>{leftIcon}</span>
       ) : (
-        <>
-          <SiderNavItem>
-            <>
-              {leftIcon}
-              {Array.isArray(subText) ? (
-                <span>{text}</span>
-              ) : (
-                <NavLink onClick={handleLink} to={to}>
-                  {({ isActive }) => {
-                    return isActive ? (
-                      <ActiveSpan>{text}</ActiveSpan>
-                    ) : (
-                      <span>{text}</span>
-                    );
-                  }}
-                </NavLink>
-              )}
-              {showRightIcon ? RightIcon : null}
-            </>
-          </SiderNavItem>
-          <>{isFold ? null : subMenu}</>
-        </>
+        <NavLink to={to}>{leftIcon}</NavLink>
       )}
+    </SiderNavItem>
+  );
+  const fullItem = (
+    <>
+      <SiderNavItem>
+        <>
+          {leftIcon}
+          {Array.isArray(subText) ? (
+            <span>{text}</span>
+          ) : (
+            <NavLink onClick={handleLink} to={to}>
+              {({ isActive }) => {
+                return isActive ? (
+                  <ActiveSpan>{text}</ActiveSpan>
+                ) : (
+                  <span>{text}</span>
+                );
+              }}
+            </NavLink>
+          )}
+          {showRightIcon ? RightIcon : null}
+        </>
+      </SiderNavItem>
+      <>{subMenu}</>
     </>
   );
+  return <>{collapse || showMidText ? iconOnlyItem : fullItem}</>;
 };
 
-export default memo(MenuItem);
+export default MenuItem;

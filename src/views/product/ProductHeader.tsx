@@ -80,7 +80,7 @@ const ProductHeader = () => {
 
   const inputWidth = hideInput ? "0" : "100%";
   const border = hideInput ? "none" : `1px solid ${colors.gray5}`;
-  let searchInputRef = createRef();
+  let searchInputRef = createRef<HTMLInputElement>();
   const onBlur = () => {
     setHideInput(true);
   };
@@ -109,11 +109,12 @@ const ProductHeader = () => {
         </HeaderControlBox>
         <SearchInputLabel htmlFor="products__header--search">
           <SearchInput
-            ref={(x) => {
-              if (x !== null) {
-                searchInputRef = { ...searchInputRef, ...{ current: x } };
-              }
-            }}
+            // ref={(x) => {
+            //   if (x !== null) {
+            //     searchInputRef = { ...searchInputRef, ...{ current: x } };
+            //   }
+            // }}
+            ref={searchInputRef}
             name="products__header--search"
             theme={{ width: inputWidth, border: border }}
             onBlur={onBlur}

@@ -11,6 +11,7 @@ import {
   productsApi
 } from "../product/productReducer";
 import images from "../../assets/img";
+import ProductPagination from "./ProductPagination";
 
 const ProductsDisplayBox = styled.div`
   /* width: 1400px;
@@ -83,9 +84,12 @@ const ProductDisplay = ({
   }, [dispatch]);
 
   return (
-    <ProductsDisplayBox>
-      {isLoading ? <StyledLoading /> : productList}
-    </ProductsDisplayBox>
+    <>
+      <ProductsDisplayBox>
+        {isLoading ? <StyledLoading /> : productList}
+      </ProductsDisplayBox>
+      {isLoading ? null : <ProductPagination />}
+    </>
   );
 };
 

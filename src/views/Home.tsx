@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
+import { MenuFoldOutlinedWithAction } from "../components/icons";
+import navi from "../config/nav";
+import * as helper from "../utils/helper";
 import HeaderBox from "./home/HeaderBox";
 import MainBox from "./home/MainBox";
 import MenuItem from "./home/MenuItem";
@@ -8,10 +12,6 @@ import PageBox from "./home/PageBox";
 import SiderBox from "./home/SiderBox";
 import SiderNav from "./home/SiderNav";
 import isLogin from "./isLogin";
-import navi from "../config/nav";
-import * as helper from "../utils/helper";
-import { useState } from "react";
-import { MenuFoldOutlinedWithAction } from "../components/icons";
 
 const HeaderNavBox = styled.nav`
   display: flex;
@@ -45,16 +45,16 @@ const Home = () => {
       />
     );
   });
-  const onClick = (ev: React.SyntheticEvent) => {
+  const onClick = () => {
     setCollapse((state) => !state);
   };
   return (
-    <PageBox>
+    <PageBox siderWidth={collapse ? "2em" : "20em"}>
       <HeaderBox>
         <HeaderTitle>UNREAL ERP</HeaderTitle>
         <HeaderNavBox>{headerNavItemList}</HeaderNavBox>
       </HeaderBox>
-      <SiderBox theme={collapse ? { minWidth: "0" } : undefined}>
+      <SiderBox atLeastWidth={collapse ? "300px" : undefined}>
         <SiderNav>{siderNavItemList}</SiderNav>
         <MenuItem
           to=""
