@@ -1,8 +1,4 @@
-import {
-  createRef,
-  SyntheticEvent,
-  useEffect, useState
-} from "react";
+import { createRef, SyntheticEvent, useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import styled from "styled-components";
 import { colors, space } from "../../assets/css/params";
@@ -15,45 +11,40 @@ const MainBox = styled.main`
 `;
 
 const NewProductForm = styled.form`
-  width: 900px;
+  max-width: 60em;
   margin: 0 auto;
   padding-bottom: ${space.lSpace};
 `;
 const MainTitle = styled.h2`
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin: ${space.space};
   margin-bottom: ${space.lSpace};
 `;
 const FormSection = styled.section`
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 8em 1fr;
   align-items: start;
   gap: ${space.mSpace};
 `;
 const SectionTitle = styled.h3`
-  font-size: 1rem;
-  margin-bottom: ${space.sSpace};
+  font-size: 1.8rem;
+  margin-bottom: ${space.space};
   grid-column: 1 / 3;
 `;
-
 const RowBox = styled.div`
   display: flex;
-  flex-flow: row nowrap;
-  margin-top: ${space.space};
-
-  & button:nth-child(n + 2) {
-    margin-left: 20px;
-  }
+  flex-flow: row wrap;
+  /* margin-top: ${space.space}; */
 `;
+
 const Select = styled.select`
-  height: auto;
-  width: 240px;
+  width: 20em;
+  font-size: 1.6rem;
   padding: ${space.sSpace};
   border-radius: ${space.borderRadius};
   margin-right: ${space.sSpace};
   border: 1px solid ${colors.gray5};
   border-radius: ${space.borderRadius};
-  font-size: 0.9rem;
 `;
 const SelectOption = styled.option``;
 
@@ -63,19 +54,22 @@ const Label = styled.label`
     accent-color: ${colors.primary.base};
   }
 `;
+
 const TitleInput = styled.input`
-  height: 2rem;
-  font-size: 0.9rem;
+  line-height: 2em;
+  font-size: 1.6rem;
   padding: 0 ${space.space};
   border: 1px solid ${colors.gray5};
   border-radius: ${space.borderRadius};
 `;
+
 const ProductDescriptionInput = styled.textarea`
-  height: 120px;
+  height: 8em;
   border: 1px solid ${colors.gray5};
   border-radius: ${space.borderRadius};
   padding: ${space.space};
-  font-size: 1rem;
+  font-size: 1.6rem;
+  line-height: 1.5em;
   margin-bottom: ${space.mSpace};
 `;
 const ImageBox = styled.div`
@@ -96,6 +90,11 @@ const mockCategory: Record<string, string[]> = {
   Kid: ["Sports", ""]
 };
 
+const StyledButtonBase = styled(ButtonBase)`
+  margin-right: 1em;
+  margin-top: 2em;
+`;
+
 const UploadImage = () => {
   return (
     <ImageBox>
@@ -114,7 +113,7 @@ const ProductNew = () => {
     setCategories(Object.getOwnPropertyNames(mockCategory));
     return () => {};
   }, []);
-  
+
   const catRef = createRef<HTMLSelectElement>();
 
   const options =
@@ -157,7 +156,7 @@ const ProductNew = () => {
       <MainTitle>New Product</MainTitle>
       <NewProductForm>
         <FormSection>
-          <SectionTitle>Base Info</SectionTitle>
+          <SectionTitle>1. Base Info</SectionTitle>
           <span>Category</span>
           <RowBox>
             <Select ref={catRef} onChange={handleCatSelect} name="category">
@@ -203,7 +202,7 @@ const ProductNew = () => {
           <ProductDescriptionInput placeholder="input here ..." />
         </FormSection>
         <FormSection>
-          <SectionTitle>Logistic Service</SectionTitle>
+          <SectionTitle>2. Logistic Service</SectionTitle>
           <span>Type</span>
           <Select name="carrier">
             <SelectOption defaultValue={""}>Please select carrier</SelectOption>
@@ -211,12 +210,12 @@ const ProductNew = () => {
           </Select>
           <span></span>
           <RowBox>
-            <ButtonBase width="100px" type="reset">
+            <StyledButtonBase width="10em" type="reset">
               Save
-            </ButtonBase>
-            <ButtonBase width="100px" type="submit">
+            </StyledButtonBase>
+            <StyledButtonBase width="10em" type="submit">
               submit
-            </ButtonBase>
+            </StyledButtonBase>
           </RowBox>
         </FormSection>
       </NewProductForm>

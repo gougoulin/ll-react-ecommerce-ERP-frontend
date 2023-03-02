@@ -39,7 +39,7 @@ ButtonBase.defaultProps = {
   borderColor: "transparent",
   backgroundColor: `${colors.primary.base}`,
   textColor: `${colors.gray1}`,
-  fontSize: "1rem",
+  fontSize: "1.6rem",
   width: "auto",
   height: "auto",
   hoverBgColor: `${colors.primary.lighter}`,

@@ -34,9 +34,9 @@ const siderNav = [
     text: "Products",
     to: "/products/",
     subText: [
-      { text: "list", to: "/products/" },
-      { text: "new", to: "/products/new" },
-      { text: "category", to: "/products/category" },
+      { text: "All Products", to: "/products/" },
+      { text: "Create Product", to: "/products/new" },
+      { text: "Category", to: "/products/category" },
     ],
     leftIcon: <ProfileOutlined />,
     showRightIcon: true

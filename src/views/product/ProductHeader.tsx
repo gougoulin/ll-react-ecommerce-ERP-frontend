@@ -13,21 +13,21 @@ import { createRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HeaderBox = styled.div`
-  display: grid;
   gap: ${space.sSpace};
   align-items: center;
   background-color: ${colors.gray1};
   height: 80px;
   border-radius: ${space.sxSpace};
-  grid-template-columns: repeat(24, 1fr);
+  display: flex;
+  justify-content: space-around;
 `;
 
 const HeaderTitleBox = styled.div`
-  grid-column: 1 / span 2;
+  /* grid-column: 1 / 2; */
   text-align: center;
 `;
 const HeaderControlBox = styled.div`
-  grid-column: 4 / 11;
+  /* grid-column: 2 / 3; */
   justify-content: "center";
 
   & button:last-child {
@@ -36,19 +36,24 @@ const HeaderControlBox = styled.div`
 `;
 
 const SearchInput = styled.input`
-  width: ${(props) => props.theme.width};
-  height: 30px;
-  /* border: 1px solid ${colors.gray5}; */
-  border: ${(props) => props.theme.border};
-  border-radius: 2px;
+  min-width: 20em;
+  border: 1px solid ${colors.gray5};
+  min-height: 2em;
+  font-size: 1.6rem;
+  line-height: 2em;
+  padding: ${space.sxSpace} ${space.space};
+  border-radius: ${space.borderRadius};
+  opacity: 0;
+  margin-right: ${space.sxSpace};
 
   &:focus {
+    opacity: 1;
     border: 1px solid ${colors.gray5};
   }
 `;
 
 const SearchInputLabel = styled.label`
-  grid-column: 12 / 18;
+  /* grid-column: 3 / 4; */
   margin-right: ${space.sxSpace};
   display: flex;
   justify-content: flex-end;
@@ -58,7 +63,7 @@ const SearchInputLabel = styled.label`
 const HeaderTitle = styled.h2``;
 
 const ToggleViewBox = styled.div`
-  grid-column: 22 / 25;
+  /* grid-column: 5 / 6; */
   display: flex;
   align-items: center;
 
@@ -67,31 +72,27 @@ const ToggleViewBox = styled.div`
   }
 `;
 const FileterIconBox = styled.div`
-  grid-column: 19 / 20;
+  /* grid-column: 19 / 20; */
 `;
 
 const SearchIconBox = styled.div`
-  grid-column: 18 / 19;
+  /* grid-column: 18 / 19; */
 `;
 
 const ProductHeader = () => {
-  const [hideInput, setHideInput] = useState(true);
+  const [_, setHideInput] = useState(true);
   const navigate = useNavigate();
-
-  const inputWidth = hideInput ? "0" : "100%";
-  const border = hideInput ? "none" : `1px solid ${colors.gray5}`;
   let searchInputRef = createRef<HTMLInputElement>();
   const onBlur = () => {
     setHideInput(true);
   };
   const onClickSearch = () => {
     setHideInput(false);
-    let elem = searchInputRef.current as any as HTMLInputElement;
-    elem.focus();
+    searchInputRef.current && searchInputRef.current.focus();
   };
   const handleCreate = () => {
     navigate("/products/new");
-  }
+  };
 
   return (
     <>
@@ -116,15 +117,14 @@ const ProductHeader = () => {
             // }}
             ref={searchInputRef}
             name="products__header--search"
-            theme={{ width: inputWidth, border: border }}
             onBlur={onBlur}
           />
+          <SearchIconBox>
+            <IconBtn onClick={onClickSearch}>
+              <AiOutlineSearch size={32} />
+            </IconBtn>
+          </SearchIconBox>
         </SearchInputLabel>
-        <SearchIconBox>
-          <IconBtn onClick={onClickSearch}>
-            <AiOutlineSearch size={32} />
-          </IconBtn>
-        </SearchIconBox>
         <FileterIconBox>
           <IconBtn>
             <AiFillFilter size={32} />
