@@ -1,8 +1,8 @@
 import { createRef, SyntheticEvent, useEffect, useState } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
 import styled from "styled-components";
 import { colors, space } from "../../assets/css/params";
 import ButtonBase from "../../components/button/ButtonBase";
+import UploadImage from "./UploadImage";
 
 const MainBox = styled.main`
   padding: ${space.space};
@@ -72,17 +72,7 @@ const ProductDescriptionInput = styled.textarea`
   line-height: 1.5em;
   margin-bottom: ${space.mSpace};
 `;
-const ImageBox = styled.div`
-  border: 1px solid ${colors.gray5};
-  border-radius: ${space.borderRadius};
-  height: 80px;
-  width: 80px;
-  margin-right: ${space.sSpace};
-  display: flex;
-  place-items: center;
-  place-content: center;
-  cursor: pointer;
-`;
+
 const mockCategory: Record<string, string[]> = {
   Man: ["Man Shoes", "Man ties"],
   Woman: ["Bags", "Dress"],
@@ -94,14 +84,6 @@ const StyledButtonBase = styled(ButtonBase)`
   margin-right: 1em;
   margin-top: 2em;
 `;
-
-const UploadImage = () => {
-  return (
-    <ImageBox>
-      <AiOutlinePlus size={48} color={colors.gray5} />
-    </ImageBox>
-  );
-};
 
 const ProductNew = () => {
   const [category, setCategory] = useState<string | undefined>();
