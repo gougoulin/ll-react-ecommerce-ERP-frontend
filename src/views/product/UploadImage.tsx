@@ -43,11 +43,11 @@ const UploadImage = () => {
   const handleFileUpload = () => {
     fileInputRef.current && fileInputRef.current.click();
   };
-  const onChange = (ev: SyntheticEvent<HTMLInputElement>) => {
+  const onChange = () => {
     let url = "",
       img = imagePreviewRef.current;
     if (
-      fileInputRef.current &&
+      fileInputRef.current !== null &&
       fileInputRef.current.files !== null &&
       fileInputRef.current.files.length > 0
     ) {
