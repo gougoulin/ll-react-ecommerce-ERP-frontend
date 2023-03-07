@@ -1,7 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import styled from "styled-components";
 import { colors, space } from "../../assets/css/params";
-import { createRef, SyntheticEvent, useState, useEffect } from "react";
+import { createRef, useState } from "react";
 
 const ImageBox = styled.div`
   border: 1px solid ${colors.gray5};
@@ -61,7 +61,6 @@ const UploadImage = () => {
       setHasImage(false);
     }
   };
-  console.log(hasImage ? "none" : "inline-block");
   return (
     <ImageBox onClick={handleFileUpload}>
       <FileInput
